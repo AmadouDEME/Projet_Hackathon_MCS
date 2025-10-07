@@ -1,0 +1,709 @@
+
+:root {
+  --blanc: #FFFFFF;
+  --dore: #D4AF37;
+  --dore-clair: #F4E4C1;
+  --marron-bois: #8B6F47;
+  --marron-fonce: #5C4033;
+  --noir-doux: #2C2C2C;
+  --gris-clair: #F5F5F5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: var(--noir-doux);
+  background: var(--blanc);
+  scroll-behavior: smooth;
+}
+
+header {
+  background: linear-gradient(135deg, var(--marron-fonce) 0%, var(--marron-bois) 100%);
+  padding: 1.5rem 5%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(212, 175, 55, 0.3);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--dore);
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--blanc);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--dore);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: var(--dore);
+}
+
+.hero {
+  min-height: 90vh;
+  background: linear-gradient(rgba(92, 64, 51, 0.6), rgba(92, 64, 51, 0.6)), 
+              url('attached_assets/musee_1759707647448.webp') center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--blanc);
+  position: relative;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: var(--dore);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content .subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--dore-clair);
+}
+
+.hero-info {
+  margin-top: 3rem;
+}
+
+.info-box {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--noir-doux);
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+}
+
+.info-label {
+  font-size: 0.9rem;
+  color: var(--marron-bois);
+  margin-bottom: 0.5rem;
+}
+
+.info-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--dore);
+  margin-bottom: 1.5rem;
+}
+
+.btn-primary, .btn-secondary, .btn-visit {
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--dore) 0%, var(--marron-bois) 100%);
+  color: var(--blanc);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+}
+
+.btn-secondary {
+  background: var(--marron-bois);
+  color: var(--blanc);
+}
+
+.btn-secondary:hover {
+  background: var(--dore);
+  transform: scale(1.05);
+}
+
+.btn-visit {
+  background: linear-gradient(135deg, var(--marron-bois) 0%, var(--dore) 100%);
+  color: var(--blanc);
+  font-size: 1.2rem;
+  padding: 1.2rem 3rem;
+  margin-top: 2rem;
+}
+
+.btn-visit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+}
+
+section {
+  padding: 5rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: var(--marron-fonce);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--marron-bois);
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.collection-grid, .niveau-grid, .event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.collection-item, .niveau-item {
+  background: var(--blanc);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(92, 64, 51, 0.1);
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.collection-item:hover, .niveau-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+}
+
+.collection-image, .niveau-image {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.collection-image img, .niveau-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.collection-item:hover .collection-image img,
+.niveau-item:hover .niveau-image img {
+  transform: scale(1.1);
+}
+
+.collection-number {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--dore);
+  color: var(--blanc);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.niveau-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(212, 175, 55, 0.95);
+  color: var(--blanc);
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.collection-item h3, .niveau-item h3 {
+  color: var(--marron-fonce);
+  padding: 1.5rem 1.5rem 1rem;
+  font-size: 1.3rem;
+}
+
+.collection-item p, .niveau-item p {
+  color: var(--marron-bois);
+  padding: 0 1.5rem 1.5rem;
+  line-height: 1.6;
+}
+
+.parcours {
+  background: linear-gradient(to bottom, var(--gris-clair) 0%, var(--blanc) 100%);
+}
+
+.exposition {
+  background: linear-gradient(rgba(92, 64, 51, 0.85), rgba(92, 64, 51, 0.85));
+  color: var(--blanc);
+  text-align: center;
+  border-radius: 20px;
+  margin: 3rem 5%;
+  padding: 4rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.exposition-gallery {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.exposition-gallery img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: imageSlide 30s infinite;
+}
+
+.exposition-gallery img:nth-child(1) { animation-delay: 0s; }
+.exposition-gallery img:nth-child(2) { animation-delay: 5s; }
+.exposition-gallery img:nth-child(3) { animation-delay: 10s; }
+.exposition-gallery img:nth-child(4) { animation-delay: 15s; }
+.exposition-gallery img:nth-child(5) { animation-delay: 20s; }
+.exposition-gallery img:nth-child(6) { animation-delay: 25s; }
+
+@keyframes imageSlide {
+  0%, 16.67% { opacity: 1; }
+  16.68%, 100% { opacity: 0; }
+}
+
+.exposition h2 {
+  color: var(--dore);
+}
+
+.exposition-badge {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.3);
+  color: var(--dore);
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.exposition .stat {
+  font-size: 1.8rem;
+  color: var(--dore);
+  margin: 2rem 0;
+  font-weight: bold;
+}
+
+.evenements {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+              url('attached_assets/festivite_1759707620074.png') center/cover;
+  border-radius: 20px;
+  padding: 5rem 5%;
+}
+
+.evenements h2 {
+  color: var(--dore);
+}
+
+.event-item {
+  display: flex;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(92, 64, 51, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.event-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+  background: var(--blanc);
+}
+
+.event-date {
+  background: var(--dore);
+  color: var(--blanc);
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  min-width: 80px;
+  height: fit-content;
+}
+
+.event-date span {
+  display: block;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.event-content h3 {
+  color: var(--marron-fonce);
+  margin-bottom: 0.5rem;
+}
+
+.event-info {
+  color: var(--dore);
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.infos {
+  background: var(--gris-clair);
+  border-radius: 20px;
+  padding: 4rem 3rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.info-column h3 {
+  color: var(--marron-fonce);
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.horaire-item, .tarif-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(139, 111, 71, 0.2);
+}
+
+.jour, .tarif-label {
+  color: var(--marron-bois);
+}
+
+.heure, .tarif-prix {
+  color: var(--dore);
+  font-weight: bold;
+}
+
+.info-detail {
+  margin-bottom: 1.5rem;
+}
+
+.info-detail strong {
+  color: var(--marron-fonce);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.info-detail p {
+  color: var(--marron-bois);
+  line-height: 1.6;
+}
+
+.visit-button-container {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+footer {
+  background: var(--marron-fonce);
+  color: var(--blanc);
+  text-align: center;
+  padding: 2rem;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background-color: var(--blanc);
+  margin: 3% auto;
+  padding: 3rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.4s ease;
+}
+
+.booking-modal-content {
+  background: linear-gradient(to bottom, rgba(244, 228, 193, 0.3), var(--blanc)),
+              url('attached_assets/musee_1759707647448.webp') center top/cover no-repeat;
+  background-blend-mode: overlay;
+}
+
+.visit-modal-content {
+  max-width: 1100px;
+}
+
+.detail-modal-content {
+  max-width: 1000px;
+}
+
+.close {
+  color: var(--marron-bois);
+  float: right;
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close:hover {
+  color: var(--dore);
+}
+
+.modal-content h2 {
+  color: var(--marron-fonce);
+  margin-bottom: 2rem;
+}
+
+.booking-form {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: var(--marron-fonce);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid var(--dore-clair);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus {
+  outline: none;
+  border-color: var(--dore);
+}
+
+.visit-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--dore-clair);
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 1rem 2rem;
+  color: var(--marron-bois);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--dore);
+  transition: width 0.3s;
+}
+
+.tab-btn.active {
+  color: var(--dore);
+}
+
+.tab-btn.active::after {
+  width: 100%;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+.tab-content h3 {
+  color: var(--marron-fonce);
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.tab-content ul {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab-content li {
+  color: var(--marron-bois);
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+.modal-detail-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+.modal-sabre-image {
+  width: 100%;
+  max-width: 500px;
+  margin: 2rem auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.detail-section {
+  margin-bottom: 2rem;
+}
+
+.detail-section h3 {
+  color: var(--marron-fonce);
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.detail-section p {
+  color: var(--marron-bois);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.detail-section ul {
+  margin-left: 2rem;
+}
+
+.detail-section li {
+  color: var(--marron-bois);
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease;
+}
+
+.fade-in-delay {
+  animation: fadeIn 1.2s ease;
+}
+
+.fade-in-delay-2 {
+  animation: fadeIn 1.5s ease;
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .collection-grid, .niveau-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .event-item {
+    flex-direction: column;
+  }
+
+  .visit-tabs {
+    flex-direction: column;
+  }
+}

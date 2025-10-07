@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bibliothèque Numérique - MCN</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    .bibliotheque-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+    .bibliotheque-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .bibliotheque-header h1 {
+      color: var(--marron-fonce);
+      margin-bottom: 1rem;
+    }
+    .oeuvre-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .oeuvre-card {
+      background: var(--blanc);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(92, 64, 51, 0.1);
+      transition: transform 0.3s;
+    }
+    .oeuvre-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    }
+    .oeuvre-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .oeuvre-info {
+      padding: 1.5rem;
+    }
+    .oeuvre-info h3 {
+      color: var(--marron-fonce);
+      margin-bottom: 0.5rem;
+    }
+    .oeuvre-info p {
+      color: var(--marron-bois);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .language-selector {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .language-selector button {
+      background: var(--dore);
+      color: var(--blanc);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      margin: 0 0.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .language-selector button:hover {
+      background: var(--marron-bois);
+    }
+    .language-selector button.active {
+      background: var(--marron-fonce);
+    }
+    .audio-player {
+      margin-top: 1rem;
+      padding: 0.5rem;
+      background: var(--gris-clair);
+      border-radius: 8px;
+      text-align: center;
+    }
+    .audio-note {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--marron-bois);
+      margin-top: 0.5rem;
+    }
+    .audio-btn {
+      background: var(--dore);
+      color: var(--blanc);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .audio-btn:hover {
+      background: var(--marron-fonce);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Bibliothèque Numérique - MCN</div>
+      <div class="nav-links">
+        <a href="index.html">Retour au site</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="bibliotheque-container">
+    <div class="bibliotheque-header">
+      <h1>Bibliothèque Numérique des Œuvres</h1>
+      <p>Explorez notre collection d'œuvres avec descriptions détaillées et audio guides</p>
+
+      <div class="language-selector">
+        <button class="active" onclick="setLanguage('fr')">Français</button>
+        <button onclick="setLanguage('wolof')">Wolof</button>
+        <button onclick="setLanguage('en')">English</button>
+      </div>
+    </div>
+
+    <div class="oeuvre-grid" id="oeuvres-list">
+      <div class="oeuvre-card">
+        <img src="attached_assets/baobab_1759707629197.png" alt="Baobab">
+        <div class="oeuvre-info">
+          <h3 class="fr">Le Baobab Monumental</h3>
+          <h3 class="wolof" style="display:none">Baobab bu mag ci</h3>
+          <h3 class="en" style="display:none">The Monumental Baobab</h3>
+          <p class="fr">Sculpture monumentale de 12 mètres en acier corten créée par l'artiste haïtien Édouard Duval-Carrié. Cette œuvre symbolise la sagesse ancestrale et la résilience des civilisations africaines.</p>
+          <p class="wolof" style="display:none">Xam-xam bu njëkk ci 12 mèt ngir acier corten, Édouard Duval-Carrié moko defar. Liggéeyu jàppale ak xam-xam bu góor yi ak nguir yi ñu jamm ci Afrig.</p>
+          <p class="en" style="display:none">Monumental 12-meter sculpture in corten steel created by Haitian artist Édouard Duval-Carrié. This work symbolizes ancestral wisdom and the resilience of African civilizations.</p>
+          <div class="audio-player">
+            <button class="audio-btn" onclick="playAudio('baobab')">🔊 Écouter l'audio guide</button>
+            <p class="audio-note">Guide audio disponible</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="oeuvre-card">
+        <img src="attached_assets/bronze_1759707567697.png" alt="Bronze Oba Oguola">
+        <div class="oeuvre-info">
+          <h3 class="fr">Tête d'Oba Oguola</h3>
+          <h3 class="wolof" style="display:none">Bop Oba Oguola</h3>
+          <h3 class="en" style="display:none">Head of Oba Oguola</h3>
+          <p class="fr">Tête commémorative en bronze du royaume du Bénin (XIVe siècle). Oba Oguola établit la tradition du bronze, créant un héritage artistique qui perdure encore aujourd'hui.</p>
+          <p class="wolof" style="display:none">Bop ci bronze bu dëkk Bénin (14ème siècle). Oba Oguola moko defar liggéey bu bronze, am xarala bu njëkk ci leeb.</p>
+          <p class="en" style="display:none">Commemorative bronze head from the Kingdom of Benin (14th century). Oba Oguola established the bronze tradition, creating an artistic legacy that endures to this day.</p>
+          <div class="audio-player">
+            <button class="audio-btn" onclick="playAudio('bronze')">🔊 Écouter l'audio guide</button>
+            <p class="audio-note">Guide audio disponible</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="oeuvre-card">
+        <img src="attached_assets/masque_1759707714666.png" alt="Masques">
+        <div class="oeuvre-info">
+          <h3 class="fr">Masques Traditionnels</h3>
+          <h3 class="wolof" style="display:none">Masque yu Aaduna</h3>
+          <h3 class="en" style="display:none">Traditional Masks</h3>
+          <p class="fr">Masques rituels ouest-africains servant de médiateurs entre le monde des vivants et celui des ancêtres. Utilisés dans les cérémonies initiatiques et spirituelles.</p>
+          <p class="wolof" style="display:none">Masque yu dëkk Afrig penku ci suñu seen nit ak seen góor. Jëfandikoo ci xew-xew yu bëgg ak ci suñu yaram.</p>
+          <p class="en" style="display:none">West African ritual masks serving as mediators between the world of the living and that of the ancestors. Used in initiatory and spiritual ceremonies.</p>
+          <div class="audio-player">
+            <button class="audio-btn" onclick="playAudio('masques')">🔊 Écouter l'audio guide</button>
+            <p class="audio-note">Guide audio disponible</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="oeuvre-card">
+        <img src="attached_assets/konate_1759707745239.png" alt="Konaté">
+        <div class="oeuvre-info">
+          <h3 class="fr">Œuvre d'Abdoulaye Konaté</h3>
+          <h3 class="wolof" style="display:none">Liggéey Abdoulaye Konaté</h3>
+          <h3 class="en" style="display:none">Work by Abdoulaye Konaté</h3>
+          <p class="fr">Installation textile monumentale de l'artiste malien Abdoulaye Konaté. Ses œuvres explorent les questions socio-politiques à travers le tissu traditionnel africain.</p>
+          <p class="wolof" style="display:none">Liggéey bu mag ci dëkk Mali, Abdoulaye Konaté moko defar. Liggéeyu jàppale ay xëb-xëb ci suñu réew ngir seen nit.</p>
+          <p class="en" style="display:none">Monumental textile installation by Malian artist Abdoulaye Konaté. His works explore socio-political issues through traditional African fabric.</p>
+          <div class="audio-player">
+            <button class="audio-btn" onclick="playAudio('konate')">🔊 Écouter l'audio guide</button>
+            <p class="audio-note">Guide audio disponible</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="oeuvre-card">
+        <img src="attached_assets/soly cisse_1759707558075.png" alt="Soly Cissé">
+        <div class="oeuvre-info">
+          <h3 class="fr">Peinture de Soly Cissé</h3>
+          <h3 class="wolof" style="display:none">Nataal Soly Cissé</h3>
+          <h3 class="en" style="display:none">Painting by Soly Cissé</h3>
+          <p class="fr">Peinture néo-expressionniste de Soly Cissé (né en 1969 à Dakar). Connu pour ses fonds noirs et ses couleurs vives, il explore l'identité africaine moderne.</p>
+          <p class="wolof" style="display:none">Nataal bu Soly Cissé moko defar (juddu 1969 ci Ndakaaru). Xamul ci bunt ñu ñuul ak melo yu rafet, jàppale seen njëkku Afrig ci leeb bi.</p>
+          <p class="en" style="display:none">Neo-expressionist painting by Soly Cissé (born in 1969 in Dakar). Known for his black backgrounds and vivid colors, he explores modern African identity.</p>
+          <div class="audio-player">
+            <button class="audio-btn" onclick="playAudio('cisse')">🔊 Écouter l'audio guide</button>
+            <p class="audio-note">Guide audio disponible</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="oeuvre-card">
+        <img src="attached_assets/chateau_1759707604033.png" alt="Mosquée Djenné">
+        <div class="oeuvre-info">
+          <h3 class="fr">Grande Mosquée de Djenné</h3>
+          <h3 class="wolof" style="display:none">Jummaa bu mag ci Djenné</h3>
+          <h3 class="en" style="display:none">Great Mosque of Djenné</h3>
+          <p class="fr">Plus grand édifice en terre crue du monde (Mali). Chef-d'œuvre de l'architecture soudano-sahélienne, inscrite au patrimoine UNESCO depuis 1988.</p>
+          <p class="wolof" style="display:none">Kër gu mag ci suuf ci àdduna (Mali). Liggéey bu rafet ci sunu Afrig, UNESCO joxe ci 1988.</p>
+          <p class="en" style="display:none">The world's largest mud-brick building (Mali). Masterpiece of Sudano-Sahelian architecture, UNESCO World Heritage Site since 1988.</p>
+          <div class="audio-player">
+            <button class="audio-btn" onclick="playAudio('djenne')">🔊 Écouter l'audio guide</button>
+            <p class="audio-note">Guide audio disponible</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Musée des Civilisations Noires - Dakar, Sénégal</p>
+  </footer>
+
+  <script>
+    function setLanguage(lang) {
+      const frElements = document.querySelectorAll('.fr');
+      const wolofElements = document.querySelectorAll('.wolof');
+      const enElements = document.querySelectorAll('.en');
+      const buttons = document.querySelectorAll('.language-selector button');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      if (lang === 'fr') {
+        frElements.forEach(el => el.style.display = 'block');
+        wolofElements.forEach(el => el.style.display = 'none');
+        enElements.forEach(el => el.style.display = 'none');
+        buttons[0].classList.add('active');
+      } else if (lang === 'wolof') {
+        frElements.forEach(el => el.style.display = 'none');
+        wolofElements.forEach(el => el.style.display = 'block');
+        enElements.forEach(el => el.style.display = 'none');
+        buttons[1].classList.add('active');
+      } else if (lang === 'en') {
+        frElements.forEach(el => el.style.display = 'none');
+        wolofElements.forEach(el => el.style.display = 'none');
+        enElements.forEach(el => el.style.display = 'block');
+        buttons[2].classList.add('active');
+      }
+    }
+
+    let currentSpeech = null;
+
+    function playAudio(oeuvre) {
+      if ('speechSynthesis' in window) {
+        if (currentSpeech) {
+          window.speechSynthesis.cancel();
+          currentSpeech = null;
+        }
+
+        const currentLang = document.querySelector('.language-selector button.active')?.textContent.toLowerCase() || 'français';
+        
+        const oeuvreCard = document.querySelector(`[onclick*="${oeuvre}"]`)?.closest('.oeuvre-card');
+        if (!oeuvreCard) return;
+
+        let textToRead = '';
+        let lang = 'fr-FR';
+
+        if (currentLang === 'français') {
+          const title = oeuvreCard.querySelector('.fr h3, h3.fr');
+          const desc = oeuvreCard.querySelector('.fr:not(h3), p.fr');
+          textToRead = (title?.textContent || '') + '. ' + (desc?.textContent || '');
+          lang = 'fr-FR';
+        } else if (currentLang === 'wolof') {
+          const title = oeuvreCard.querySelector('.wolof h3, h3.wolof');
+          const desc = oeuvreCard.querySelector('.wolof:not(h3), p.wolof');
+          textToRead = (title?.textContent || '') + '. ' + (desc?.textContent || '');
+          lang = 'wo-SN';
+        } else if (currentLang === 'english') {
+          const title = oeuvreCard.querySelector('.en h3, h3.en');
+          const desc = oeuvreCard.querySelector('.en:not(h3), p.en');
+          textToRead = (title?.textContent || '') + '. ' + (desc?.textContent || '');
+          lang = 'en-US';
+        }
+
+        if (textToRead.trim()) {
+          currentSpeech = new SpeechSynthesisUtterance(textToRead);
+          currentSpeech.lang = lang;
+          currentSpeech.rate = 0.9;
+          currentSpeech.pitch = 1;
+          window.speechSynthesis.speak(currentSpeech);
+        }
+      } else {
+        alert('Désolé, votre navigateur ne supporte pas la synthèse vocale.');
+      }
+    }
+  </script>
+</body>
+</html>
