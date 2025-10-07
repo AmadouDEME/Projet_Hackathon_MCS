@@ -46,11 +46,20 @@ nav {
   font-weight: bold;
   color: var(--dore);
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo i {
+  font-size: 1.8rem;
+  color: var(--dore);
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
+  align-items: center;
 }
 
 .nav-links a {
@@ -58,12 +67,22 @@ nav {
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+
+.nav-links a i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
 }
 
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
@@ -79,6 +98,96 @@ nav {
   color: var(--dore);
 }
 
+.nav-links a:hover i {
+  transform: translateY(-3px);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--blanc);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0.5rem;
+}
+
+.mobile-menu-btn:hover {
+  color: var(--dore);
+}
+
+.mobile-menu-btn i {
+  display: block;
+  line-height: 1;
+}
+/* Afficher le bouton de menu mobile en mode téléphone */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block; /* Affiche le bouton en mode mobile */
+  }
+
+  .nav-links {
+    display: none; /* Masque les liens par défaut */
+  }
+
+  .nav-links.active {
+    display: flex; /* Affiche les liens quand le modal est actif */
+  }
+}
+
+/* Styles pour le modal du menu mobile */
+.mobile-menu-modal {
+  display: none;
+  position: fixed;
+  z-index: 1100; /* Plus haut que le header */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Fond semi-transparent */
+  animation: fadeIn 0.3s ease;
+}
+
+.mobile-menu-modal-content {
+  background: var(--blanc);
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  animation: slideUp 0.4s ease;
+}
+
+.mobile-menu-modal-content .nav-links {
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-menu-modal-content .nav-links a {
+  font-size: 1.2rem;
+  color: var(--marron-fonce);
+  padding: 0.8rem;
+  display: block;
+}
+
+.mobile-menu-modal-content .nav-links a:hover {
+  color: var(--dore);
+}
+
+.mobile-menu-modal-content .close {
+  color: var(--marron-bois);
+  font-size: 2rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.mobile-menu-modal-content .close:hover {
+  color: var(--dore);
+}
 .hero {
   min-height: 90vh;
   background: linear-gradient(rgba(92, 64, 51, 0.6), rgba(92, 64, 51, 0.6)), 
@@ -706,4 +815,35 @@ footer {
   .visit-tabs {
     flex-direction: column;
   }
+}
+.mobile-menu-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+}
+
+.mobile-menu-modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 5rem auto;
+  width: 80%;
+  max-width: 400px;
+}
+
+.mobile-menu-modal .nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.mobile-menu-modal .nav-links a {
+  color: var(--marron-fonce);
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
