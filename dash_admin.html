@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Admin - MCN</title>
+    <link rel="stylesheet" href="dash_admin.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <i class="ri-ancient-gate-fill"></i>
+          <h2>Musée des Civilisations Noires</h2>
+          <span class="admin-badge"
+            ><i class="ri-shield-star-line"></i> Administrateur</span
+          >
+        </div>
+
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a class="nav-link active" onclick="showSection('dashboard')">
+              <i class="ri-dashboard-line"></i>
+              <span>Tableau de bord</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="showSection('reservations')">
+              <i class="ri-calendar-check-line"></i>
+              <span>Réservations</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="showSection('notifications')">
+              <i class="ri-notification-3-line"></i>
+              <span>Notifications clients</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="showSection('users')">
+              <i class="ri-user-line"></i>
+              <span>Utilisateurs</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="showSection('stats')">
+              <i class="ri-bar-chart-line"></i>
+              <span>Statistiques</span>
+            </a>
+          </li>
+        </ul>
+
+        <button class="logout-btn" onclick="logout()">
+          <i class="ri-logout-box-line"></i>
+          Déconnexion
+        </button>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="content-header">
+          <h1>Bienvenue, Administrateur</h1>
+          <p id="currentDate"></p>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="section active">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <div>
+                  <div class="stat-value" id="totalReservations">0</div>
+                  <div class="stat-label">Réservations totales</div>
+                </div>
+                <i class="ri-calendar-line"></i>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <div>
+                  <div class="stat-value" id="pendingReservations">0</div>
+                  <div class="stat-label">En attente</div>
+                </div>
+                <i class="ri-time-line"></i>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <div>
+                  <div class="stat-value" id="acceptedReservations">0</div>
+                  <div class="stat-label">Acceptées</div>
+                </div>
+                <i class="ri-check-line"></i>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <div>
+                  <div class="stat-value" id="totalUsers">0</div>
+                  <div class="stat-label">Utilisateurs inscrits</div>
+                </div>
+                <i class="ri-group-line"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-header">
+            <h2>
+              <i class="ri-calendar-check-line"></i> Réservations récentes
+            </h2>
+          </div>
+          <div id="recentReservations"></div>
+        </div>
+
+        <!-- Reservations Section -->
+        <div id="reservations" class="section">
+          <div class="section-header">
+            <h2>
+              <i class="ri-calendar-check-line"></i> Gestion des réservations
+            </h2>
+          </div>
+
+          <div class="filter-buttons">
+            <button
+              class="filter-btn active"
+              onclick="filterReservations('all', event)">
+              Toutes
+            </button>
+            <button
+              class="filter-btn"
+              onclick="filterReservations('pending', event)">
+              En attente
+            </button>
+            <button
+              class="filter-btn"
+              onclick="filterReservations('accepted', event)">
+              Acceptées
+            </button>
+            <button
+              class="filter-btn"
+              onclick="filterReservations('rejected', event)">
+              Refusées
+            </button>
+            <button
+              class="filter-btn"
+              onclick="filterReservations('week', event)">
+              Cette semaine
+            </button>
+            <button
+              class="filter-btn"
+              onclick="filterReservations('month', event)">
+              Ce mois
+            </button>
+          </div>
+
+          <div id="reservationsContent"></div>
+        </div>
+
+        <!-- Notifications Section -->
+        <div id="notifications" class="section">
+          <div class="section-header">
+            <h2>
+              <i class="ri-notification-3-line"></i> Envoyer une notification
+            </h2>
+          </div>
+
+          <div class="alert alert-success" id="notificationAlert">
+            <i class="ri-check-line"></i> Notification envoyée avec succès !
+          </div>
+
+          <form onsubmit="sendNotification(event)">
+            <div class="form-group">
+              <label>Destinataires</label>
+              <select class="form-control" id="recipients">
+                <option value="all">Tous les clients</option>
+                <option value="active">
+                  Clients avec réservations actives
+                </option>
+                <option value="pending">
+                  Clients avec réservations en attente
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Titre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="notificationTitle"
+                placeholder="Ex: Nouvelle exposition"
+                required />
+            </div>
+
+            <div class="form-group">
+              <label>Message</label>
+              <textarea
+                class="form-control"
+                id="notificationMessage"
+                placeholder="Votre message aux clients..."
+                required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              <i class="ri-send-plane-fill"></i> Envoyer la notification
+            </button>
+          </form>
+
+          <div class="section-header" style="margin-top: 40px">
+            <h2>
+              <i class="ri-history-line"></i> Historique des notifications
+            </h2>
+          </div>
+          <div id="notificationHistory"></div>
+        </div>
+
+        <!-- Users Section -->
+        <div id="users" class="section">
+          <div class="section-header">
+            <h2><i class="ri-user-line"></i> Utilisateurs inscrits</h2>
+          </div>
+          <div id="usersContent"></div>
+        </div>
+
+        <!-- Stats Section -->
+        <div id="stats" class="section">
+          <div class="section-header">
+            <h2><i class="ri-bar-chart-line"></i> Statistiques détaillées</h2>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <div>
+                  <div class="stat-value" id="weekReservations">0</div>
+                  <div class="stat-label">Réservations cette semaine</div>
+                </div>
+                <i class="ri-calendar-week-line"></i>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <div>
+                  <div class="stat-value" id="monthReservations">0</div>
+                  <div class="stat-label">Réservations ce mois</div>
+                </div>
+                <i class="ri-calendar-2-line"></i>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <div>
+                  <div class="stat-value" id="avgDailyReservations">0</div>
+                  <div class="stat-label">Moyenne par jour</div>
+                </div>
+                <i class="ri-line-chart-line"></i>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <div>
+                  <div class="stat-value" id="popularDay">-</div>
+                  <div class="stat-label">Jour le plus populaire</div>
+                </div>
+                <i class="ri-star-line"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="dash_admin.js"></script>
+  </body>
+</html>
