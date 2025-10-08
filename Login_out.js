@@ -1,5 +1,5 @@
 // Charger les utilisateurs depuis localStorage au démarrage
-let users = JSON.parse(localStorage.getItem('mcn_users')) || [];
+let users = JSON.parse(localStorage.getItem("mcn_users")) || [];
 
 function switchForm(formType) {
   const loginForm = document.getElementById("loginForm");
@@ -40,17 +40,20 @@ function handleLogin(event) {
 
   if (user) {
     // Sauvegarder la session de l'utilisateur connecté
-    localStorage.setItem('mcn_current_user', JSON.stringify({
-      name: user.name,
-      email: user.email
-    }));
+    localStorage.setItem(
+      "mcn_current_user",
+      JSON.stringify({
+        name: user.name,
+        email: user.email,
+      })
+    );
 
     successMsg.textContent = `Bienvenue ${user.name} !`;
     successMsg.classList.add("show");
 
-    // Rediriger vers index.html après 1.5 secondes
+    // Rediriger vers accueul.html après 1.5 secondes
     setTimeout(() => {
-      window.location.href = "index.html";
+      window.location.href = "accueil.html";
     }, 1500);
   } else {
     successMsg.style.background = "rgba(244, 67, 54, 0.1)";
@@ -115,7 +118,7 @@ function handleRegister(event) {
 
   // Ajouter l'utilisateur et sauvegarder dans localStorage
   users.push({ name, email, password });
-  localStorage.setItem('mcn_users', JSON.stringify(users));
+  localStorage.setItem("mcn_users", JSON.stringify(users));
 
   successMsg.textContent = "Inscription réussie ! Redirection...";
   successMsg.classList.add("show");
@@ -133,11 +136,11 @@ function socialLogin(provider) {
 
 // Fonction pour se déconnecter (à utiliser dans index.html si besoin)
 function logout() {
-  localStorage.removeItem('mcn_current_user');
-  window.location.href = "Login_out.html";
+  localStorage.removeItem("mcn_current_user");
+  window.location.href = "index.html";
 }
 
 // Fonction pour vérifier si l'utilisateur est connecté (à utiliser dans index.html si besoin)
 function getCurrentUser() {
-  return JSON.parse(localStorage.getItem('mcn_current_user'));
+  return JSON.parse(localStorage.getItem("mcn_current_user"));
 }

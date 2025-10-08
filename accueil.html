@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musée des Civilisations Noires</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  </head>
+  <body>
+<header>
+  <nav>
+    <div class="logo">
+      <i class="ri-ancient-gate-line"></i>
+      <span>Musée des Civilisations Noires</span>
+    </div>
+    <div class="nav-links">
+      <a href="#collections">
+        <i class="ri-gallery-line"></i>
+        <span>Collections</span>
+      </a>
+      <a href="#parcours">
+        <i class="ri-route-line"></i>
+        <span>Parcours</span>
+      </a>
+      <a href="#exposition">
+        <i class="ri-image-2-line"></i>
+        <span>Exposition</span>
+      </a>
+      <a href="#evenements">
+        <i class="ri-calendar-event-line"></i>
+        <span>Événements</span>
+      </a>
+      <a href="#infos">
+        <i class="ri-information-line"></i>
+        <span>Infos pratiques</span>
+      </a>
+    </div>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+      <i class="ri-menu-line"></i>
+    </button>
+  </nav>
+</header>
+
+<!-- Modal pour le menu mobile -->
+<div id="mobileMenuModal" class="mobile-menu-modal">
+  <div class="mobile-menu-modal-content">
+    <span class="close" onclick="closeMobileMenu()">&times;</span>
+    <div class="nav-links">
+      <a href="#collections">
+        <i class="ri-gallery-line"></i>
+        <span>Collections</span>
+      </a>
+      <a href="#parcours">
+        <i class="ri-route-line"></i>
+        <span>Parcours</span>
+      </a>
+      <a href="#exposition">
+        <i class="ri-image-2-line"></i>
+        <span>Exposition</span>
+      </a>
+      <a href="#evenements">
+        <i class="ri-calendar-event-line"></i>
+        <span>Événements</span>
+      </a>
+      <a href="#infos">
+        <i class="ri-information-line"></i>
+        <span>Infos pratiques</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="fade-in">Musée des Civilisations noires</h1>
+        <p class="subtitle fade-in-delay">Venez le découvrir</p>
+        <a href="#collections" class="btn-primary">Explorer les collections</a>
+      </div>
+      <div class="hero-info">
+        <div class="info-box fade-in-delay-2">
+          <p class="info-label">Ouvert aujourd'hui</p>
+          <p class="info-value">9h - 18h</p>
+          <button class="btn-secondary" onclick="openBookingModal()">
+            Réserver un billet
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="collections" class="collections">
+      <h2>Collections</h2>
+      <p class="section-subtitle">
+        Découvrez plus de 1 300 œuvres et objets répartis sur 4 niveaux
+        thématiques
+      </p>
+
+      <div class="collection-grid">
+        <div class="collection-item" onclick="openModal('baobab')">
+          <div class="collection-image">
+            <img
+              src="attached_assets/baobab_1759707629197.png"
+              alt="Baobab monumental" />
+            <div class="collection-number">01</div>
+          </div>
+          <h3>Le Baobab monumental</h3>
+          <p>
+            Sculpture géante créée par l'artiste haïtien Édouard Duval-Carrié,
+            œuvre centrale qui accueille les visiteurs au cœur du musée.
+          </p>
+        </div>
+
+        <div class="collection-item" onclick="openModal('bronzes')">
+          <div class="collection-image">
+            <img
+              src="attached_assets/bronze_1759707567697.png"
+              alt="Sculptures en bronze" />
+            <div class="collection-number">02</div>
+          </div>
+          <h3>Tête d'Oba Oguola - Bronze du Bénin</h3>
+          <p>
+            Magnifique tête commémorative en bronze du royaume du Bénin,
+            témoignage de l'excellence artistique héritée d'Oba Oguola,
+            fondateur de la tradition du bronze au XIVe siècle.
+          </p>
+        </div>
+
+        <div class="collection-item" onclick="openModal('masques')">
+          <div class="collection-image">
+            <img
+              src="attached_assets/masque_1759707714666.png"
+              alt="Masques traditionnels" />
+            <div class="collection-number">03</div>
+          </div>
+          <h3>Masques traditionnels</h3>
+          <p>
+            Masques rituels ouest-africains représentant diverses traditions
+            culturelles et cérémonies ancestrales du continent.
+          </p>
+        </div>
+
+        <div class="collection-item" onclick="openModal('contemporain')">
+          <div class="collection-image">
+            <img
+              src="attached_assets/konate_1759707745239.png"
+              alt="Art contemporain" />
+            <div class="collection-number">04</div>
+          </div>
+          <h3>Art contemporain africain</h3>
+          <p>
+            Œuvres d'Abdoulaye Konaté (Mali) et d'autres artistes contemporains
+            majeurs explorant l'identité africaine moderne.
+          </p>
+        </div>
+
+        <div class="collection-item" onclick="openModal('tapisseries')">
+          <div class="collection-image">
+            <img
+              src="attached_assets/soly cisse_1759707558075.png"
+              alt="Peintures et tapisseries" />
+            <div class="collection-number">05</div>
+          </div>
+          <h3>Peintures et tapisseries - Soly Cissé</h3>
+          <p>
+            Œuvres expressionnistes de Soly Cissé et autres peintures illustrant
+            la richesse créative des civilisations noires à travers les siècles.
+          </p>
+        </div>
+
+        <div class="collection-item" onclick="openModal('photographies')">
+          <div class="collection-image">
+            <img
+              src="attached_assets/conse_1759707613406.png"
+              alt="Photographies" />
+            <div class="collection-number">06</div>
+          </div>
+          <h3>Photographies et vidéos arts</h3>
+          <p>
+            Archives photographiques et installations vidéo documentant
+            l'évolution des civilisations noires de la préhistoire à nos jours.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="parcours" class="parcours">
+      <h2>Parcours thématique</h2>
+      <p class="section-subtitle">Un voyage à travers 4 niveaux d'exposition</p>
+
+      <div class="niveau-grid">
+        <div class="niveau-item" onclick="openModal('niveau1')">
+          <div class="niveau-image">
+            <img
+              src="attached_assets/afrique_1759707547579.png"
+              alt="Origines de l'humanité" />
+            <div class="niveau-badge">Niveau 1</div>
+          </div>
+          <h3>L'Afrique, berceau de l'humanité</h3>
+          <p>
+            Origines de l'homme, vestiges archéologiques, outils en pierre, et
+            découvertes scientifiques prouvant la naissance de l'humanité en
+            Afrique.
+          </p>
+        </div>
+
+        <div class="niveau-item" onclick="openModal('niveau2')">
+          <div class="niveau-image">
+            <img
+              src="attached_assets/chateau_1759707604033.png"
+              alt="Grands empires" />
+            <div class="niveau-badge">Niveau 2</div>
+          </div>
+          <h3>Grands empires africains</h3>
+          <p>
+            Objets historiques des royaumes et empires, dont le célèbre sabre
+            d'El Hadj Omar Tall, chef anticolonial du XIXe siècle.
+          </p>
+        </div>
+
+        <div class="niveau-item" onclick="openModal('niveau3')">
+          <div class="niveau-image">
+            <img
+              src="attached_assets/populaire_1759707575343.png"
+              alt="Arts et traditions" />
+            <div class="niveau-badge">Niveau 3</div>
+          </div>
+          <h3>Arts et traditions populaires</h3>
+          <p>
+            Instruments de musique, masques, sculptures, peintures et
+            tapisseries célébrant la diversité culturelle africaine.
+          </p>
+        </div>
+
+        <div class="niveau-item" onclick="openModal('niveau4')">
+          <div class="niveau-image">
+            <img
+              src="attached_assets/festivite_1759707620074.png"
+              alt="Diaspora" />
+            <div class="niveau-badge">Niveau 4</div>
+          </div>
+          <h3>Religions et diaspora</h3>
+          <p>
+            Exploration des mouvements culturels et politiques qui ont façonné
+            l'histoire des peuples noirs à travers le monde.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="exposition" class="exposition">
+      <div class="exposition-gallery">
+        <img src="attached_assets/baobab_1759707629197.png" alt="Baobab" />
+        <img src="attached_assets/bronze_1759707567697.png" alt="Bronze" />
+        <img src="attached_assets/masque_1759707714666.png" alt="Masques" />
+        <img src="attached_assets/konate_1759707745239.png" alt="Konaté" />
+        <img src="attached_assets/musee_1759707647448.webp" alt="Musée" />
+        <img src="attached_assets/sabre_1759707596682.png" alt="Sabre" />
+      </div>
+      <div class="exposition-badge">Exposition permanente</div>
+      <h2>Civilisations africaines : création continue de l'humanité</h2>
+      <p>
+        Notre exposition inaugurale retrace l'histoire des civilisations noires
+        depuis les origines de l'humanité jusqu'à l'époque contemporaine,
+        mettant en lumière leurs contributions majeures au patrimoine universel.
+      </p>
+      <p class="stat">Plus de 18 000 pièces dans nos collections</p>
+      <button class="btn-primary" onclick="window.location.href='#collections'">
+        Découvrir le parcours
+      </button>
+    </section>
+
+    <section id="evenements" class="evenements">
+      <h2>Événements</h2>
+
+      <div class="event-grid">
+        <div class="event-item" onclick="openEventModal('restitutions')">
+          <div class="event-date">15<span>Nov</span></div>
+          <div class="event-content">
+            <h3>Conférence : Les restitutions du patrimoine africain</h3>
+            <p>
+              Rencontre avec des experts sur les enjeux de la restitution des
+              œuvres africaines conservées dans les musées européens.
+            </p>
+            <p class="event-info">14h - Auditorium</p>
+          </div>
+        </div>
+
+        <div class="event-item" onclick="openEventModal('bronze')">
+          <div class="event-date">22<span>Nov</span></div>
+          <div class="event-content">
+            <h3>Atelier : Sculptures en bronze</h3>
+            <p>
+              Initiation aux techniques ancestrales de sculpture en bronze
+              inspirées des œuvres du royaume du Bénin.
+            </p>
+            <p class="event-info">10h - Salle pédagogique</p>
+          </div>
+        </div>
+
+        <div class="event-item" onclick="openEventModal('nocturne')">
+          <div class="event-date">06<span>Déc</span></div>
+          <div class="event-content">
+            <h3>Visite nocturne : Collections permanentes</h3>
+            <p>
+              Une expérience unique pour découvrir nos 4 niveaux thématiques
+              dans une atmosphère intimiste.
+            </p>
+            <p class="event-info">18h - 21h</p>
+          </div>
+        </div>
+
+        <div class="event-item" onclick="openEventModal('documentaires')">
+          <div class="event-date">14<span>Déc</span></div>
+          <div class="event-content">
+            <h3>Projection : Documentaires sur les civilisations noires</h3>
+            <p>
+              Cycle de projections explorant l'histoire et la culture des
+              peuples africains et de la diaspora.
+            </p>
+            <p class="event-info">15h - Auditorium</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="infos" class="infos">
+      <div class="info-grid">
+        <div class="info-column">
+          <h3>Horaires</h3>
+          <div class="horaire-item">
+            <span class="jour">Lundi</span>
+            <span class="heure">Fermé</span>
+          </div>
+          <div class="horaire-item">
+            <span class="jour">Mardi - Samedi</span>
+            <span class="heure">9h - 18h</span>
+          </div>
+          <div class="horaire-item">
+            <span class="jour">Dimanche</span>
+            <span class="heure">10h - 17h</span>
+          </div>
+        </div>
+
+        <div class="info-column">
+          <h3>Accès</h3>
+          <div class="info-detail">
+            <strong>Adresse</strong>
+            <p>
+              l'Autoroute prolongée<br />Place de la Gare<br />Dakar, Sénégal
+            </p>
+          </div>
+          <div class="info-detail">
+            <strong>Téléphone</strong>
+            <p>+221 33 941 25 67</p>
+          </div>
+          <div class="info-detail">
+            <strong>Email</strong>
+            <p>contact@mcn.sn</p>
+          </div>
+        </div>
+
+        <div class="info-column">
+          <h3>Tarifs</h3>
+          <div class="tarif-item">
+            <span class="tarif-label">Plein tarif</span>
+            <span class="tarif-prix">2 000 FCFA</span>
+          </div>
+          <div class="tarif-item">
+            <span class="tarif-label">Avec guide</span>
+            <span class="tarif-prix">3 000 FCFA</span>
+          </div>
+          <div class="tarif-item">
+            <span class="tarif-label">Groupes (10+)</span>
+            <span class="tarif-prix">Sur réservation</span>
+          </div>
+          <div class="tarif-item">
+            <span class="tarif-label">-18 ans</span>
+            <span class="tarif-prix">Gratuit</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="visit-button-container">
+        <button class="btn-visit" onclick="openVisitModal()">
+          Préparez votre visite
+        </button>
+      </div>
+
+      <div
+        class="bibliotheque-section"
+        style="
+          text-align: center;
+          margin-top: 3rem;
+          padding: 2rem;
+          background: rgba(212, 175, 55, 0.1);
+          border-radius: 15px;
+        ">
+        <h3 style="color: var(--marron-fonce); margin-bottom: 1rem">
+          Bibliothèque Numérique des Œuvres
+        </h3>
+        <p style="color: var(--marron-bois); margin-bottom: 1.5rem">
+          Scannez le QR code pour accéder à notre collection complète avec audio
+          guides en français, wolof et anglais
+        </p>
+        <div
+          style="
+            display: inline-block;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+          ">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://musee-civilisations-noires.replit.dev/bibliotheque.html"
+            alt="QR Code Bibliothèque"
+            style="display: block" />
+        </div>
+        <br />
+        <a href="bibliotheque.html" class="btn-primary" style="margin-top: 1rem"
+          >Accéder à la bibliothèque</a
+        >
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 Musée des Civilisations Noires - Dakar, Sénégal</p>
+    </footer>
+
+    <!-- Modal de réservation -->
+    <div id="bookingModal" class="modal">
+      <div class="modal-content booking-modal-content">
+        <span class="close" onclick="closeBookingModal()">&times;</span>
+        <h2>Réserver un billet</h2>
+        <form class="booking-form" id="bookingForm">
+          <div class="form-group">
+            <label>Type de billet</label>
+            <select id="ticketType" onchange="handleTicketTypeChange()">
+              <option value="plein">Plein tarif - 2 000 FCFA</option>
+              <option value="guide">Avec guide - 3 000 FCFA</option>
+              <option value="groupe">Groupe (10+) - Sur réservation</option>
+              <option value="jeune">-18 ans - Gratuit</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Date de visite</label>
+            <input type="date" id="visitDate" required />
+          </div>
+          <div class="form-group">
+            <label>Nombre de personnes</label>
+            <input type="number" id="numPersons" min="1" value="1" required />
+          </div>
+          <div class="form-group">
+            <label>Nom complet</label>
+            <input type="text" id="fullName" required />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" required />
+          </div>
+
+          <!-- Bloc pour les réservations de groupe -->
+          <div
+            id="groupInfoBlock"
+            style="
+              display: none;
+              background: rgba(212, 175, 55, 0.1);
+              padding: 1.5rem;
+              border-radius: 8px;
+              margin: 1rem 0;
+            ">
+            <h3 style="color: var(--marron-fonce); margin-bottom: 1rem">
+              Contact pour réservation de groupe
+            </h3>
+            <p style="margin-bottom: 0.5rem">
+              <strong>Assistant(e) MCN - Réservations de groupe :</strong>
+            </p>
+            <p style="margin-bottom: 0.5rem">
+              📞 Téléphone : +221 33 869 39 00
+            </p>
+            <p style="margin-bottom: 0.5rem">
+              ✉️ Email : reservations.groupe@mcn.sn
+            </p>
+            <p
+              style="
+                color: var(--marron-bois);
+                font-size: 0.9rem;
+                margin-top: 1rem;
+              ">
+              Veuillez contacter notre assistant(e) pour finaliser votre
+              réservation de groupe. Un tarif préférentiel sera appliqué.
+            </p>
+          </div>
+
+          <!-- Bloc de paiement (masqué pour -18 ans) -->
+          <div id="paymentBlock">
+            <div class="form-group">
+              <label>Mode de paiement</label>
+              <select id="paymentMethod" onchange="handlePaymentMethodChange()">
+                <option value="">Sélectionnez un mode de paiement</option>
+                <option value="carte">Carte bancaire</option>
+                <option value="mobilemoney">
+                  Mobile Money (Orange Money / Wave)
+                </option>
+              </select>
+            </div>
+
+            <!-- Champ pour carte bancaire -->
+            <div id="cardPaymentFields" style="display: none">
+              <div class="form-group">
+                <label>Numéro de carte bancaire</label>
+                <input
+                  type="text"
+                  id="cardNumber"
+                  placeholder="1234 5678 9012 3456"
+                  maxlength="19" />
+              </div>
+            </div>
+
+            <!-- Champ pour mobile money -->
+            <div id="mobileMoneyFields" style="display: none">
+              <div class="form-group">
+                <label>Numéro de téléphone (Mobile Money)</label>
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  placeholder="+221 XX XXX XX XX" />
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            Confirmer la réservation
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de préparation de visite -->
+    <div id="visitModal" class="modal">
+      <div class="modal-content visit-modal-content">
+        <span class="close" onclick="closeVisitModal()">&times;</span>
+        <h2>Préparez votre visite</h2>
+        <div class="visit-tabs">
+          <button class="tab-btn active" onclick="showTab('plan')">
+            Plan du musée
+          </button>
+          <button class="tab-btn" onclick="showTab('acces')">
+            Accès & Transport
+          </button>
+          <button class="tab-btn" onclick="showTab('localisation')">
+            Localisation
+          </button>
+        </div>
+        <div id="plan-tab" class="tab-content active">
+          <h3>Plan du musée</h3>
+          <p><strong>4 niveaux d'exposition :</strong></p>
+          <ul>
+            <li>
+              <strong>Niveau 1</strong> : L'Afrique, berceau de l'humanité
+            </li>
+            <li><strong>Niveau 2</strong> : Grands empires africains</li>
+            <li><strong>Niveau 3</strong> : Arts et traditions populaires</li>
+            <li><strong>Niveau 4</strong> : Religions et diaspora</li>
+          </ul>
+          <p><strong>Installations principales :</strong></p>
+          <ul>
+            <li>Baobab monumental (atrium central)</li>
+            <li>Auditorium pour événements</li>
+            <li>Salle pédagogique</li>
+            <li>Boutique du musée</li>
+          </ul>
+        </div>
+        <div id="acces-tab" class="tab-content">
+          <h3>Accès & Transport</h3>
+          <p><strong>En transport en commun :</strong></p>
+          <ul>
+            <li>Bus : Lignes 7, 11, 24 - Arrêt "Place de la Gare"</li>
+            <li>Taxi : À proximité de la gare ferroviaire</li>
+            <li>Dakar Dem Dikk : Plusieurs lignes desservent le quartier</li>
+          </ul>
+          <p><strong>En voiture :</strong></p>
+          <ul>
+            <li>Parking gratuit disponible</li>
+            <li>Accès par l'Autoroute prolongée</li>
+            <li>Stationnement pour personnes à mobilité réduite</li>
+          </ul>
+          <p><strong>Accessibilité :</strong></p>
+          <ul>
+            <li>
+              Musée entièrement accessible aux personnes à mobilité réduite
+            </li>
+            <li>Ascenseurs pour accès aux 4 niveaux</li>
+            <li>Toilettes adaptées</li>
+          </ul>
+        </div>
+        <div id="localisation-tab" class="tab-content">
+          <h3>Localisation</h3>
+          <p><strong>Adresse complète :</strong></p>
+          <p>
+            Musée des Civilisations Noires<br />
+            l'Autoroute prolongée, Place de la Gare<br />
+            Dakar, Sénégal
+          </p>
+          <p><strong>Coordonnées GPS :</strong></p>
+          <p>14.6928° N, 17.4467° O</p>
+          <p><strong>À proximité :</strong></p>
+          <ul>
+            <li>Grand Théâtre National (5 min à pied)</li>
+            <li>Gare ferroviaire de Dakar (2 min à pied)</li>
+            <li>Centre-ville de Dakar (10 min en voiture)</li>
+          </ul>
+          <div class="map-placeholder">
+            <p
+              style="
+                text-align: center;
+                padding: 40px;
+                background: rgba(205, 170, 125, 0.1);
+                border-radius: 8px;
+              ">
+              📍 Carte interactive disponible sur place
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modals pour les collections (suite dans le prochain fichier) -->
+    <div id="detailModal" class="modal">
+      <div class="modal-content detail-modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
