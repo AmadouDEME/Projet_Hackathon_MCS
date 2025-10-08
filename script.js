@@ -1189,3 +1189,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+// Déconnexion
+function logout() {
+  if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
+    localStorage.removeItem("mcn_current_user");
+    window.location.href = "index.html";
+  }
+}

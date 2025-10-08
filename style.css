@@ -832,6 +832,29 @@ footer {
   width: 80%;
   max-width: 400px;
 }
+.logout-btn {
+  margin-top: 30px;
+  width: 100%;
+  padding: 15px;
+  background: var(--marron-fonce);
+  color: var(--blanc);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 16px;
+  font-family: inherit;
+  transition: all 0.3s;
+}
+
+.logout-btn:hover {
+  background: var(--noir-doux);
+  transform: scale(1.05);
+}
+
 
 .mobile-menu-modal .nav-links {
   display: flex;
